@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import DateRangePicker from "./components/DateRangePicker";
+import "./styles.css";
 
-function App() {
+const App: React.FC = () => {
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+  
+  // callback to capture the startDate and endDate
+  const handleDateRangeChange = (
+    startDate: Date | null,
+    endDate: Date | null
+  ) => {
+    console.log('handleDateRangeChange', { startDate, endDate });
+    setStartDate(startDate);
+    setEndDate(endDate);
+  };
+
+  const handleSubmit = () => {
+    if (startDate && endDate) {
+      alert(`Selected data range is from ${startDate.toDateString()} to ${endDate.toDateString()}`)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h2>Date Picker Component</h2>
+        <DateRangePicker onChange={handleDateRangeChange} />
+        <button onClick={handleSubmit} type="submit">Submit</button>
     </div>
   );
-}
+};
 
 export default App;

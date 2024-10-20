@@ -44,3 +44,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Instructions to setup and start the project:
+1. npm install
+2. npm start
+
+Component Descriptions:
+1. App
+   Purpose: The main application component.
+   State Management: Holds the state for startDate and endDate.
+   Callbacks: Handles the submission of the selected date range and passes date changes to DateRangePicker.
+
+2. DateRangePicker
+   Purpose: Responsible for managing the date range selection.
+   State Management: Holds local state for startDate and endDate.
+   Callbacks: Calls onChange prop to communicate date changes to App.
+   Rendering: Renders the Calendar component and displays the selected date range.
+
+3. Calendar
+   Purpose: Displays a calendar view for date selection.
+   Props: Receives startDate, endDate, and a date selection callback from DateRangePicker.
+   Logic: Manages current month state, generates days for the calendar, and handles keyboard navigation and date selection.
+   Rendering: Renders multiple Day components representing each date.
+
+4. Day
+   Purpose: Represents an individual day in the calendar.
+   Props: Receives date-related properties to determine its appearance (e.g., isInRange, isHovered, isFocused, isStartDate, isEndDate).
+   Callbacks: Handles click and keyboard events for date selection.
